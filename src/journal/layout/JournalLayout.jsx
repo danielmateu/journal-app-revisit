@@ -1,3 +1,4 @@
+import { Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
 import { Navbar } from '../components/Navbar'
 import { Sidebar } from '../components/Sidebar'
@@ -30,7 +31,7 @@ export const JournalLayout = ({children}) => {
                     flexGrow: 1,
                     p:3}}
             >
-                {/* Toolbar */}
+                <Toolbar/>
                 {children}
             </Box>
         </Box>
