@@ -1,33 +1,21 @@
-import { Grid, TextField, Typography } from "@mui/material"
-
+import { Google } from "@mui/icons-material"
+import { Button, Grid, Link, TextField, Typography } from "@mui/material"
+import { Link as RouterLink } from "react-router-dom"
+import { AuthLayout } from "../layout/AuthLayout"
 
 export const LoginPage = () => {
     return (
-        <Grid
-            container
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
+        <AuthLayout
+            title='Login'
         >
-            <Grid
-                item
-                xs={3}
-                className='box-shadow'
-                sx={{ backgroundColor: 'background.paper', padding: 4, borderRadius: 2 }}
-            >
-                <Typography variant='h4' component='h1' align='center' gutterBottom>Login</Typography>
-
-                <form action="">
+            <form action="">
                     <Grid
                         container
-                        spacing={2}
-                        // direction="column"
-                        // alignItems="center"
-                        // justifyContent="center"
+                        gap='1rem'
                     >
-                        <Grid item xs={12}>
+                        <Grid
+                            item
+                            xs={12} >
                             <TextField
                                 label='Correo'
                                 type={'email'}
@@ -36,7 +24,9 @@ export const LoginPage = () => {
                                 placeholder="correo@gmail.com"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid
+                            item
+                            xs={12}>
                             <TextField
                                 label='Contraseña'
                                 type={'password'}
@@ -45,11 +35,48 @@ export const LoginPage = () => {
                                 placeholder="********"
                             />
                         </Grid>
+                        <Grid
+                            container
+                            sx={{ marginTop: 2 }}
+                            alignItems="center"
+                            justifyContent="center"
+                            gap='1rem'
+                        >
+                            <Grid item xs={12} sm={5}>
+                                <Button
+                                    variant='contained'
+                                    color='primary'
+                                    fullWidth
+                                >Login</Button>
+                            </Grid>
+
+                            <Grid item xs={12} sm={5} >
+                                <Button
+                                    variant='contained'
+                                    color='secondary'
+                                    fullWidth
+                                    // sx={{ gap: 1 }}
+                                    startIcon={<Google />}
+                                >Google</Button>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                    <Grid
+                        container
+                        sx={{ marginTop: 2 }}
+                        direction="row"
+                        justifyContent="end"
+                    >
+                        <Link
+                            component={RouterLink}
+                            variant='body2'
+                            to='/auth/register'
+                        >Crear una cuenta</Link>
                     </Grid>
                 </form>
-            </Grid>
-
-        </Grid>
+        </AuthLayout>
     )
 }
 
