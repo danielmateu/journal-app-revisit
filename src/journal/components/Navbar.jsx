@@ -1,5 +1,5 @@
-import { MenuOutlined } from '@mui/icons-material'
-import { AppBar, IconButton, Toolbar } from '@mui/material'
+import { LogoutOutlined, MenuOutlined } from '@mui/icons-material'
+import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 
 export const Navbar = ({drawerWidth}) => {
@@ -7,14 +7,45 @@ export const Navbar = ({drawerWidth}) => {
         <AppBar
             position={'fixed'}
             sx={{
-                width: `calc(100% - ${drawerWidth}px)`,
-                ml: `${drawerWidth}px`,
+                width:{ sm:`calc(100% - ${drawerWidth}px)`},
+                // md: `${drawerWidth}px`,
             }}
         >
             <Toolbar>
-                <IconButton>
-                    <MenuOutlined/>
+                <IconButton
+                    color={'inherit'}
+                    // aria-label={'open drawer'}
+                    edge={'start'}
+                    sx={{
+                        display: { sm: 'none'},
+                        mr: 2,
+                    }}
+                >
+                    <MenuOutlined
+                        fontSize={'large'}
+                        // color={'secondary'}
+                    />
                 </IconButton>
+
+                <Grid
+                    container
+                    direction={'row'}
+                    justifyContent={'space-between'}
+                    alignItems={'center'}
+                >
+                    <Typography
+                        variant={'h6'}
+                        noWrap
+                        component={'div'}
+                    >Journal App</Typography>
+                    <IconButton
+                        color={'error'}
+                        // aria-label={'open drawer'}
+                        edge={'start'}
+                    >
+                        <LogoutOutlined/>
+                    </IconButton>
+                </Grid>
             </Toolbar>
         </AppBar>
     )
