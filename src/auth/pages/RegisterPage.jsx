@@ -1,13 +1,14 @@
 // import { Google } from '@mui/icons-material'
 import { Button, Grid, Link, TextField } from '@mui/material'
+import { useState } from 'react'
 import { Link as RouterLink } from "react-router-dom"
 import { useForm } from '../../hooks/useForm'
 import { AuthLayout } from '../layout/AuthLayout'
 
 const formData = {
-    displayName: 'John Doe',
-    email: 'dani@gmail.com',
-    password: '123456'
+    displayName: '',
+    email: '',
+    password: ''
 }
 
 const formValidations = {
@@ -18,13 +19,16 @@ const formValidations = {
 
 const RegisterPage = () => {
 
+    const [formSubmitted, setFormSubmitted] = useState(false)
+
     const { displayName, email, password, onInputChange, displayNameValid, isFormValid, emailValid, passwordValid, formState } = useForm(formData, formValidations)
 
     // console.log(displayNameValid);
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(formState)
+        setFormSubmitted(true)
+        // console.log(formState)
     }
 
     return (
@@ -54,7 +58,7 @@ const RegisterPage = () => {
                             name="displayName"
                             onChange={onInputChange}
                             value={displayName}
-                            error={!!displayNameValid}
+                            error={!!displayNameValid && formSubmitted}
                             helperText={displayNameValid}
                         />
                     </Grid>
@@ -70,7 +74,7 @@ const RegisterPage = () => {
                             name="email"
                             onChange={onInputChange}
                             value={email}
-                            error={!!emailValid}
+                            error={!!emailValid && formSubmitted}
                             helperText={emailValid}
                         />
                     </Grid>
@@ -86,22 +90,11 @@ const RegisterPage = () => {
                             name="password"
                             onChange={onInputChange}
                             value={password}
-                            error={!!passwordValid}
+                            error={!!passwordValid && formSubmitted }
                             helperText={passwordValid}
 
                         />
                     </Grid>
-                    {/* <Grid
-                        item
-                        xs={12}>
-                        <TextField
-                            label='Repite la contraseña'
-                            type={'password'}
-                            fullWidth
-                            required
-                            placeholder="********"
-                        />
-                    </Grid> */}
 
                     <Grid
                         container
