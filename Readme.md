@@ -1,1 +1,4 @@
-- Instalación MUI + IconsUI
+# Instalaciones
+
+- MUI + IconsUI
+- Redux toolkit + react-redux
