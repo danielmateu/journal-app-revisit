@@ -1,7 +1,8 @@
-import { checkingCredentials } from "./authSlice";
+import { signInWithGoogle } from "../../src/firebase/providers";
+import { checkingCredentials, login, logout } from "./authSlice";
 
 
-export const checkingAuthentication = (email, password) => {
+export const checkingAuthentication = () => {
 
     return async (dispatch) => {
         dispatch(checkingCredentials());
@@ -9,17 +10,15 @@ export const checkingAuthentication = (email, password) => {
 }
 
 export const startGoogleSignIn = () => {
-    return (dispatch) => {
-        console.log('startGoogleSignIn');
-        dispatch(checkingCredentials());
-        // firebase.auth().signInWithPopup(googleAuthProvider)
-        //     .then(({ user }) => {
-        //         dispatch(login({
-        //             uid: user.uid,
-        //             email: user.email,
-        //             displayName: user.displayName,
-        //             photoURL: user.photoURL,
-        //         }));
-        //     });
+    return async( dispatch ) => {
+
+        dispatch( checkingCredentials() );
+
+        const result = await signInWithGoogle();
+        console.log(result);
+        if ( !result.ok ) return dispatch( logout( result.errorMessage ) );
+
+        dispatch( login( result ))
+
     }
 }

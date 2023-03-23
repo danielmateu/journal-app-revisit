@@ -13,21 +13,21 @@ export const authSlice = createSlice({
     },
     reducers: {
         // The `state` parameter is typed as `RootState` above
-        login: (state, action) => {
-            state.status = 'authenticated';
-            state.uid = action.payload.uid;
-            state.email = action.payload.email;
-            state.displayName = action.payload.displayName;
-            state.photoURL = action.payload.photoURL;
+        login: (state, {payload}) => {
+            // state.status = 'authenticated';
+            // state.uid = action.payload.uid;
+            // state.email = action.payload.email;
+            // state.displayName = action.payload.displayName;
+            // state.photoURL = action.payload.photoURL;
         },
-        logout: (state, payload) => {
-            state.status = 'not-authenticated';
-            state.uid = null;
-            state.email = null;
-            state.displayName = null;
-            state.photoURL = null;
+        logout: (state, {payload}) => {
+            // state.status = 'not-authenticated';
+            // state.uid = null;
+            // state.email = null;
+            // state.displayName = null;
+            // state.photoURL = null;
         },
-        checkingCredentials: (state, payload) => {
+        checkingCredentials: (state) => {
             state.status = 'checking';
         },
 
