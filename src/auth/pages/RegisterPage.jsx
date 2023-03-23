@@ -13,7 +13,7 @@ const RegisterPage = () => {
                     container
                     gap='1rem'
                 >
-                    {/* <Grid
+                    <Grid
                         item
                         xs={12} >
                         <TextField
@@ -23,8 +23,8 @@ const RegisterPage = () => {
                             required
                             placeholder="John Doe"
                         />
-                    </Grid> */}
-                    {/* <Grid
+                    </Grid>
+                    <Grid
                         item
                         xs={12} >
                         <TextField
@@ -34,7 +34,7 @@ const RegisterPage = () => {
                             required
                             placeholder="correo@gmail.com"
                         />
-                    </Grid> */}
+                    </Grid>
                     <Grid
                         item
                         xs={12}>
@@ -46,7 +46,7 @@ const RegisterPage = () => {
                             placeholder="********"
                         />
                     </Grid>
-                    <Grid
+                    {/* <Grid
                         item
                         xs={12}>
                         <TextField
@@ -56,7 +56,7 @@ const RegisterPage = () => {
                             required
                             placeholder="********"
                         />
-                    </Grid>
+                    </Grid> */}
 
                     <Grid
                         container

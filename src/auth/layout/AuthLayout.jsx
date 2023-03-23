@@ -14,9 +14,9 @@ export const AuthLayout = ({children, title = ''}) => {
         >
             <Grid
                 item
-                xs={12} sm={8} md={6} lg={4}
                 className='box-shadow'
-                sx={{ backgroundColor: 'background.paper', padding: 4, borderRadius: 2 }}
+                sx={{ backgroundColor: 'background.paper', padding: 4, borderRadius: 2, 
+                minWidth: '350px', width: '50%' }}
             >
                 <Typography variant='h4' component='h1' align='left' gutterBottom>{title}</Typography>
 
