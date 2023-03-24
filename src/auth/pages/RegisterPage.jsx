@@ -43,7 +43,7 @@ const RegisterPage = () => {
     return (
         <AuthLayout
             title='Crear cuenta'>
-            <h1>Form {isFormValid ? 'correcto' : 'incorrecto'}</h1>
+            {/* <h1>Form {isFormValid ? 'correcto' : 'incorrecto'}</h1> */}
             <form
                 action=""
                 onSubmit={onSubmit}
@@ -104,14 +104,12 @@ const RegisterPage = () => {
 
                     <Grid
                         container
-                        sx={{ marginTop: 2 }}
+                        // sx={{ marginTop: 2 }}
                         alignItems="center"
                         justifyContent="center"
                         gap='1rem'
                     >
-                        <Grid item xs={12} md={5} display={!!errorMessage ? '' : 'none'}>
-                            <Alert severity="error">{errorMessage}</Alert>
-                        </Grid>
+
                         <Grid item xs={12} md={5}>
                             <Button
                                 disabled={isCheckingAuthentication}
@@ -120,6 +118,10 @@ const RegisterPage = () => {
                                 color='primary'
                                 fullWidth
                             >Registrar</Button>
+                        </Grid>
+
+                        <Grid item xs={12} md={5} display={!!errorMessage ? '' : 'none'}>
+                            <Alert severity="error">{errorMessage}</Alert>
                         </Grid>
 
                     </Grid>

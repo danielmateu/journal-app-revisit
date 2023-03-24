@@ -3,20 +3,18 @@ import { Link as RouterLink } from "react-router-dom"
 import { useMemo } from "react"
 
 import { Google } from "@mui/icons-material"
-import { Button, Grid, Link, TextField } from "@mui/material"
+import { Alert, Button, Grid, Link, TextField } from "@mui/material"
 
-import { checkingAuthentication, startGoogleSignIn } from "../../../store/auth/thunks"
+import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailAndPassword } from "../../../store/auth/thunks"
 
 import { useForm } from "../../hooks/useForm"
 import { AuthLayout } from "../layout/AuthLayout"
 
 export const LoginPage = () => {
 
-    const { status } = useSelector(state => state.auth)
+    const { status, errorMessage } = useSelector(state => state.auth)
     // console.log(status);
-
     const dispatch = useDispatch()
-
     const { email, password, onInputChange } = useForm({
         email: '',
         password: ''
@@ -26,8 +24,9 @@ export const LoginPage = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        dispatch(checkingAuthentication());
-
+        // No es la acción a despachar
+        // dispatch(checkingAuthentication());
+        dispatch(startLoginWithEmailAndPassword({ email, password }))
     }
 
     const onGoogleSignIn = () => {
@@ -35,9 +34,7 @@ export const LoginPage = () => {
     }
 
     return (
-        <AuthLayout
-            title='Login'
-        >
+        <AuthLayout title='Login'>
             <form action="" onSubmit={onSubmit}>
                 <Grid
                     container
@@ -73,14 +70,17 @@ export const LoginPage = () => {
                     </Grid>
                     <Grid
                         container
-                        sx={{ marginTop: 2 }}
+                        // sx={{ marginTop: 2 }}
                         alignItems="center"
                         justifyContent="center"
                         gap='1rem'
                     >
+
+
                         <Grid item xs={12} sm={5}>
                             <Button
                                 disabled={isAuthenticating}
+                                // onClick={onLoginSignIn}
                                 type='submit'
                                 variant='contained'
                                 color='primary'
@@ -99,6 +99,16 @@ export const LoginPage = () => {
                                 // sx={{ gap: 1 }}
                                 startIcon={<Google />}
                             >Google</Button>
+                        </Grid>
+
+                        <Grid
+                            container
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            <Grid item xs={12} md={5} display={!!errorMessage ? '' : 'none'}>
+                                <Alert severity="error">{errorMessage}</Alert>
+                            </Grid>
                         </Grid>
 
                     </Grid>
