@@ -15,7 +15,7 @@ export const CheckinAuth = () => {
             sx={{ minHeight: '100vh', backgroundColor: 'primary.main' }}
         >
             <Grid
-                item
+                container
                 // className='box-shadow'
                 sx={{
                     // backgroundColor: 'background.paper',
