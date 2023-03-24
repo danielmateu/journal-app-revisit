@@ -5,9 +5,10 @@ import { Sidebar } from '../components/Sidebar'
 
 const drawerWidth = 240
 
-export const JournalLayout = ({children}) => {
+export const JournalLayout = ({ children }) => {
     return (
         <Box
+            className='animate__animated animate__fadeIn animate__faster'
             sx={{
                 display: 'flex',
                 // flexDirection: 'column',
@@ -29,9 +30,10 @@ export const JournalLayout = ({children}) => {
                 component={'main'}
                 sx={{
                     flexGrow: 1,
-                    p:3}}
+                    p: 3
+                }}
             >
-                <Toolbar/>
+                <Toolbar />
                 {children}
             </Box>
         </Box>
