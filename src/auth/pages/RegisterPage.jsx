@@ -108,7 +108,7 @@ const RegisterPage = () => {
                                 variant='contained'
                                 color='primary'
                                 fullWidth
-                            >Login</Button>
+                            >Registrar</Button>
                         </Grid>
 
                     </Grid>

@@ -23,12 +23,13 @@ export const startGoogleSignIn = () => {
     }
 }
 
-export const startCreatingUserWithEmailAndPassword = ({email, password, displayName}) => {
+export const startCreatingUserWithEmailAndPassword = ({ email, password, displayName }) => {
     return async (dispatch) => {
         dispatch(checkingCredentials());
-        const resp = await registerUserWithEmailPassword({email, password, displayName});
-        console.log(resp);
-        // if (!result.ok) return dispatch(logout(result.errorMessage));
-        // dispatch(login(result))
+        const resp = await registerUserWithEmailPassword({ email, password, displayName });
+        // console.log(resp);
+
+        if (!resp.ok) return dispatch(logout({ errorMessage: resp.errorMessage }));
+        dispatch(login({ uid, displayName, email, photoURL }))
     }
 }
