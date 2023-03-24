@@ -1,8 +1,12 @@
 import { TurnedInNot } from '@mui/icons-material'
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 export const Sidebar = ({ drawerWidth }) => {
+
+    const {displayName} = useSelector(state => state.auth)
+
     const texto = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     return (
         <Box
@@ -29,7 +33,7 @@ export const Sidebar = ({ drawerWidth }) => {
                         variant={'h6'}
                         noWrap
                         component={'div'}
-                    >Daniel Mateu</Typography>
+                    >{displayName}</Typography>
                 </Toolbar>
                 <Divider />
                 <List>

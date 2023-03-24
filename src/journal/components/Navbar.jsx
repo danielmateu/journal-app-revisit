@@ -1,12 +1,26 @@
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material'
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import { startLogout } from '../../../store/auth/thunks'
+import { useCheckAuth } from '../../hooks/useCheckAuth'
 
-export const Navbar = ({drawerWidth}) => {
+export const Navbar = ({ drawerWidth }) => {
+
+    // obtain displayName
+    
+    // console.log(displayName);
+    const dispatch = useDispatch()
+
+    const onLogout = () => {
+        // console.log('Logout')
+        dispatch(startLogout())
+    }
+
     return (
         <AppBar
             position={'fixed'}
             sx={{
-                width:{ sm:`calc(100% - ${drawerWidth}px)`},
+                width: { sm: `calc(100% - ${drawerWidth}px)` },
                 // md: `${drawerWidth}px`,
             }}
         >
@@ -16,13 +30,13 @@ export const Navbar = ({drawerWidth}) => {
                     // aria-label={'open drawer'}
                     edge={'start'}
                     sx={{
-                        display: { sm: 'none'},
+                        display: { sm: 'none' },
                         mr: 2,
                     }}
                 >
                     <MenuOutlined
                         fontSize={'large'}
-                        // color={'secondary'}
+                    // color={'secondary'}
                     />
                 </IconButton>
 
@@ -38,11 +52,12 @@ export const Navbar = ({drawerWidth}) => {
                         component={'div'}
                     >Journal App</Typography>
                     <IconButton
+                        onClick={onLogout}
                         color={'error'}
                         // aria-label={'open drawer'}
                         edge={'start'}
                     >
-                        <LogoutOutlined/>
+                        <LogoutOutlined />
                     </IconButton>
                 </Grid>
             </Toolbar>
