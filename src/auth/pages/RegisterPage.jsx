@@ -30,7 +30,7 @@ const RegisterPage = () => {
         e.preventDefault()
         setFormSubmitted(true)
         if (!isFormValid) return
-        // dispatch(startCreatingUserWithEmailAndPassword(formState))
+        dispatch(startCreatingUserWithEmailAndPassword(formState))
     }
 
     return (
