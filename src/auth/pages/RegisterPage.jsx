@@ -1,7 +1,9 @@
 // import { Google } from '@mui/icons-material'
 import { Button, Grid, Link, TextField } from '@mui/material'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link as RouterLink } from "react-router-dom"
+import { startCreatingUserWithEmailAndPassword } from '../../../store/auth/thunks'
 import { useForm } from '../../hooks/useForm'
 import { AuthLayout } from '../layout/AuthLayout'
 
@@ -14,30 +16,27 @@ const formData = {
 const formValidations = {
     email: [(value) => value.includes('@'), 'Debe ser un mail válido'],
     displayName: [(value) => value.length >= 3, 'El nombre debe tener más de 3 caracteres'],
-    password: [(value) => value.length >= 6, 'La contraseña debe tener más de 5 caracteres']
+    password: [(value) => value.length >= 6, 'La contraseña debe tener más de 6 caracteres']
 }
 
 const RegisterPage = () => {
 
+    const dispatch = useDispatch()
     const [formSubmitted, setFormSubmitted] = useState(false)
 
     const { displayName, email, password, onInputChange, displayNameValid, isFormValid, emailValid, passwordValid, formState } = useForm(formData, formValidations)
 
-    // console.log(displayNameValid);
-
     const onSubmit = (e) => {
         e.preventDefault()
         setFormSubmitted(true)
-        // console.log(formState)
+        if (!isFormValid) return
+        // dispatch(startCreatingUserWithEmailAndPassword(formState))
     }
 
     return (
         <AuthLayout
             title='Crear cuenta'>
-            {
-                <h1>Formulario: {isFormValid ? 'Correcto': 'Incorrecto'}</h1>
-                
-            }
+            <h1>Form {isFormValid ? 'correcto' : 'incorrecto'}</h1>
             <form
                 action=""
                 onSubmit={onSubmit}
@@ -90,7 +89,7 @@ const RegisterPage = () => {
                             name="password"
                             onChange={onInputChange}
                             value={password}
-                            error={!!passwordValid && formSubmitted }
+                            error={!!passwordValid && formSubmitted}
                             helperText={passwordValid}
 
                         />
@@ -103,7 +102,7 @@ const RegisterPage = () => {
                         justifyContent="center"
                         gap='1rem'
                     >
-                        <Grid item xs={12} sm={5}>
+                        <Grid item xs={12} md={5}>
                             <Button
                                 type='submit'
                                 variant='contained'
@@ -111,17 +110,6 @@ const RegisterPage = () => {
                                 fullWidth
                             >Login</Button>
                         </Grid>
-
-                        {/* <Grid item xs={12} sm={5} >
-                            <Button
-                                type='submit'
-                                variant='contained'
-                                color='secondary'
-                                fullWidth
-                                // sx={{ gap: 1 }}
-                                startIcon={<Google />}
-                            >Google</Button>
-                        </Grid> */}
 
                     </Grid>
                 </Grid>
