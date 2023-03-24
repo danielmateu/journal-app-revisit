@@ -16,7 +16,6 @@ export const NoteView = () => {
             sx={{
                 // minHeight: 'calc(100vh - 110px)',
                 // display: 'flex',
-
             }}
         >
             <Grid

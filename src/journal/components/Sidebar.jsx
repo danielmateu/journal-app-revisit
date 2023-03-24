@@ -38,7 +38,7 @@ export const Sidebar = ({ drawerWidth }) => {
                 <Divider />
                 <List>
                     {
-                        ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'].map((text, index) => (
+                        ['Enero', 'Febrero', 'Marzo', 'Abril'].map((text, index) => (
                             <ListItem
                                 key={text} disablePadding
                             >
