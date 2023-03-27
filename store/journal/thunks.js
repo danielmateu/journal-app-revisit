@@ -1,6 +1,7 @@
 import { addNewEmptyNote, savingNewNote, setActiveNote, setSaving, updatedNote } from "./journalSlice";
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FiresbaseDB } from "../../src/firebase/config";
+import { fileUpload } from "../../src/helpers/fileUpload";
 
 export const startNewNote = () => {
     return async (dispatch, getState) => {
@@ -44,3 +45,19 @@ export const startSaveNote = (note) => {
         dispatch(updatedNote(note))
     }
 }
+
+// startUploadingFiles to cloudinary
+export const startUploadingFiles = (files = []) => {
+    return async (dispatch, getState) => {
+        dispatch(setSaving());
+        console.log(files);
+
+        await fileUpload(files[0])
+
+        
+
+
+    }
+}
+
+
