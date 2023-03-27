@@ -1,11 +1,22 @@
 // import { MailOutline } from '@mui/icons-material'
 import { AddOutlined } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import { startNewNote } from '../../../store/journal/thunks'
 import { JournalLayout } from '../layout/JournalLayout'
 import { NoteView } from '../views/NoteView'
 import { NothingSelectedView } from '../views/NothingSelectedView'
 
 const JournalPage = () => {
+
+    const dispatch = useDispatch()
+
+    const onClickNewNote = () => {
+        // console.log('New Note')
+        dispatch( startNewNote() )
+    }
+
+
     return (
         <JournalLayout>
 
@@ -16,6 +27,7 @@ const JournalPage = () => {
             {/* <NoteView /> */}
 
             <IconButton
+                onClick={onClickNewNote}
                 sx={{
                     position: 'fixed',
                     bottom: 20,
