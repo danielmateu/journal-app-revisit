@@ -8,8 +8,8 @@ export const Sidebar = ({ drawerWidth }) => {
 
     const { displayName } = useSelector(state => state.auth)
     const { notes } = useSelector(state => state.journal)
-    console.log(notes);
-    const texto = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
+    // console.log(notes);
+    // const texto = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
     return (
         <Box
             component={'nav'}
