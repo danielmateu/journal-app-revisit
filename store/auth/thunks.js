@@ -1,10 +1,11 @@
 
 import { loginWithEmailAndPassword, logoutFirebase, registerUserWithEmailPassword, signInWithGoogle } from "../../src/firebase/providers";
+import { loadNotes } from "../../src/helpers/loadNotes";
+import { setNotes } from "../journal/journalSlice";
 import { checkingCredentials, login, logout } from "./authSlice";
 
 
 export const checkingAuthentication = () => {
-
     return async (dispatch) => {
         dispatch(checkingCredentials());
     }
@@ -51,5 +52,16 @@ export const startLogout = () => {
         await logoutFirebase();
 
         dispatch(logout());
+    }
+}
+
+export const startLoadingnotes = () => {
+    return async (dispatch, getState) => {
+        const {uid} = getState().auth;
+        if(!uid) throw new Error('You need to be authenticated');
+        console.log(uid);
+
+        const notes = await loadNotes(uid)
+        dispatch(setNotes(notes))
     }
 }
