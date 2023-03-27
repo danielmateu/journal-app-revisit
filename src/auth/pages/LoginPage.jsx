@@ -12,13 +12,15 @@ import { AuthLayout } from "../layout/AuthLayout"
 
 export const LoginPage = () => {
 
+    const formData = {
+        email: '',
+        password: ''
+    }
+
     const { status, errorMessage } = useSelector(state => state.auth)
     // console.log(status);
     const dispatch = useDispatch()
-    const { email, password, onInputChange } = useForm({
-        email: '',
-        password: ''
-    })
+    const { email, password, onInputChange } = useForm(formData)
 
     const isAuthenticating = useMemo(() => status === 'checking', [status])
 
@@ -35,7 +37,7 @@ export const LoginPage = () => {
 
     return (
         <AuthLayout title='Login'
-            
+
         >
             <form action="" onSubmit={onSubmit}
                 className='animate__animated animate__fadeIn animate__faster'
