@@ -59,7 +59,7 @@ export const startLoadingnotes = () => {
     return async (dispatch, getState) => {
         const {uid} = getState().auth;
         if(!uid) throw new Error('You need to be authenticated');
-        console.log(uid);
+        // console.log(uid);
 
         const notes = await loadNotes(uid)
         dispatch(setNotes(notes))

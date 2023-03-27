@@ -27,6 +27,8 @@ export const startNewNote = () => {
     }
 }
 
+
+
 export const startSaveNote = (note) => {
     return async (dispatch, getState) => {
 

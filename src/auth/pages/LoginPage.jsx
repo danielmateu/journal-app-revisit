@@ -10,12 +10,12 @@ import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailAndPasswo
 import { useForm } from "../../hooks/useForm"
 import { AuthLayout } from "../layout/AuthLayout"
 
-export const LoginPage = () => {
+const formData = {
+    email: '',
+    password: ''
+}
 
-    const formData = {
-        email: '',
-        password: ''
-    }
+export const LoginPage = () => {
 
     const { status, errorMessage } = useSelector(state => state.auth)
     // console.log(status);
@@ -39,7 +39,7 @@ export const LoginPage = () => {
         <AuthLayout title='Login'
 
         >
-            <form action="" onSubmit={onSubmit}
+            <form onSubmit={onSubmit}
                 className='animate__animated animate__fadeIn animate__faster'
 
             >
