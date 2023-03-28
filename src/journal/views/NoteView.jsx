@@ -18,8 +18,16 @@ export const NoteView = () => {
     const { body, title, date, onInputChange, formState } = useForm(note)
 
     const dateString = useMemo(() => {
-        const newDate = new Date(date)
-        return newDate.toUTCString()
+        // const newDate = new Date(date)
+        // return newDate.toUTCString()
+
+        return new Date(date).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+
+
+        })
     }, [date])
 
     const fileInputRef = useRef()
