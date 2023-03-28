@@ -1,7 +1,8 @@
 
 
 export const fileUpload = async (file) => {
-    if(!file) throw new Error('No file selected');
+    // if(!file) throw new Error('No file selected');
+    if(!file) return null;
 
     const cloudUrl = 'https://api.cloudinary.com/v1_1/daniel-mateu-pardo/upload';
     const formData = new FormData();
@@ -14,21 +15,13 @@ export const fileUpload = async (file) => {
             body: formData
         });
 
-        // console.log(resp);
-
-        // if(resp.ok) {
-        //     const cloudResp = await resp.json();
-        //     return cloudResp.secure_url;
-        // } else {
-        //     throw await resp.json();
-        // }
-
         if(!resp.ok) throw new Error('Error uploading file');
         const cloudResp = await resp.json();
         return cloudResp.secure_url;
 
     } catch (error) {
-        throw new Error(error.message);
+        // throw new Error(error.message);
+        return null
     }
 
 }
