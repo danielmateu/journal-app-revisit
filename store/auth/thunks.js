@@ -4,7 +4,6 @@ import { loadNotes } from "../../src/helpers/loadNotes";
 import { clearNotesLogout, setNotes } from "../journal/journalSlice";
 import { checkingCredentials, login, logout } from "./authSlice";
 
-
 export const checkingAuthentication = () => {
     return async (dispatch) => {
         dispatch(checkingCredentials());
@@ -17,7 +16,7 @@ export const startGoogleSignIn = () => {
         dispatch(checkingCredentials());
 
         const result = await signInWithGoogle();
-        console.log({result});
+        // console.log({result});
         if (!result.ok) return dispatch(logout(result.errorMessage));
 
         dispatch(login(result))
