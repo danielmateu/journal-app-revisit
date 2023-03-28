@@ -29,6 +29,7 @@ export const ImageGallery = ({ images }) => {
                         // {...srcset(image.img, 121, image.rows, image.cols)}  
                         alt='image Note'
                         loading="lazy"
+                        className='animate__animated animate__fadeIn animate__faster'
                     />
                 </ImageListItem>
             ))}
