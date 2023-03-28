@@ -13,6 +13,7 @@ export const startNewNote = () => {
         const newNote = {
             title: '',
             body: '',
+            imageUrl: [],
             date: new Date().getTime()
         }
 
@@ -65,7 +66,7 @@ export const startUploadingFiles = (files = []) => {
             fileUploadPromises.push(fileUpload(file));
         }
         const photoUrls = await Promise.all(fileUploadPromises);
-        console.log(photoUrls);
+        // console.log(photoUrls);
 
         dispatch(setPhotosToActiveNote(photoUrls))
 
