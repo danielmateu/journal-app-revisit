@@ -32,7 +32,7 @@ export const journalSlice = createSlice({
         setNotes: (state, action) => {
             state.notes = action.payload;
         },
-        setSaving: (state, action) => { 
+        setSaving: (state, action) => {
             state.isSaving = true;
             state.messageSaved = '';
             // TODO: Mensaje de error
@@ -58,7 +58,11 @@ export const journalSlice = createSlice({
             state.active = null
         },
 
-        deleteNote: (state, action) => { },
+        deleteNoteById: (state, action) => {
+            state.notes = state.notes.filter(note => note.id !== action.payload);
+            state.active = null;
+            state.messageSaved = 'Nota eliminada correctamente';
+        },
         setMessageSaved: (state, action) => { },
     }
 });
@@ -70,10 +74,11 @@ export const {
     setActiveNote,
     setNotes,
     updateNote,
-    deleteNote,
+    // deleteNote,
     setSaving,
     updatedNote,
     setMessageSaved,
     setPhotosToActiveNote,
-    clearNotesLogout
+    clearNotesLogout,
+    deleteNoteById
 } = journalSlice.actions;

@@ -1,10 +1,10 @@
-import { SaveAsSharp, UploadOutlined } from '@mui/icons-material'
+import { DeleteOutline, SaveAsSharp, UploadOutlined } from '@mui/icons-material'
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material'
 import { useEffect, useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import { setActiveNote } from '../../../store/journal/journalSlice'
-import { startSaveNote, startUploadingFiles } from '../../../store/journal/thunks'
+import { startDeletingNote, startSaveNote, startUploadingFiles } from '../../../store/journal/thunks'
 import { useForm } from '../../hooks/useForm'
 
 import { ImageGallery } from '../components/ImageGallery'
@@ -39,15 +39,34 @@ export const NoteView = () => {
         dispatch(startSaveNote())
     }
 
-    const onFileInputChange = ({target}) => {
-        if(target.files.length === 0) return
+    const onFileInputChange = ({ target }) => {
+        if (target.files.length === 0) return
         console.log('Subiendo archivos...');
         dispatch(startUploadingFiles(target.files))
     }
 
-    
+    const onDelete = () => {
+        // Swal.fire({
+        //     title: '¿Estás seguro?',
+        //     text: 'No podrás recuperar la nota',
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Sí, borrar',
+        //     cancelButtonText: 'Cancelar'
+        // }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         Swal.fire(
+        //             'Borrado!',
+        //             'La nota ha sido borrada',
+        //             'success'
+        //         )
+        //     }
+        // })
 
-
+        dispatch(startDeletingNote())
+    }
 
     return (
         <Grid
@@ -95,7 +114,7 @@ export const NoteView = () => {
                 <IconButton
                     color='primary'
                     // aria-label='upload picture'
-                    disabled = {isSaving}
+                    disabled={isSaving}
                     onClick={() => fileInputRef.current.click()}
 
                 >
@@ -147,6 +166,20 @@ export const NoteView = () => {
                     onChange={onInputChange}
 
                 />
+            </Grid>
+
+            <Grid
+                container
+            >
+                <Button
+                    onClick={onDelete}
+                    variant='outlined'
+                    color='error'
+                >
+
+                <DeleteOutline/>
+                Borrar
+                </Button>
             </Grid>
 
             {/* Image Gallery */}
