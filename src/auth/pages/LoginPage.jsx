@@ -98,6 +98,7 @@ export const LoginPage = () => {
                         <Grid item xs={12} sm={5} >
                             <Button
                                 // type='submit'
+                                aria-label="google-btn"
                                 disabled={isAuthenticating}
                                 onClick={onGoogleSignIn}
                                 variant='contained'
