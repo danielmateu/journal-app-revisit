@@ -39,6 +39,7 @@ export const LoginPage = () => {
         <AuthLayout title='Login'
 
         >
+            {/* <h1>Hola mundo: {import.meta.env.VITE_HOLA}</h1> */}
             <form onSubmit={onSubmit}
                 className='animate__animated animate__fadeIn animate__faster'
 
