@@ -57,7 +57,33 @@ describe('Pruebas en Login Page', () => {
         fireEvent.click(googleButton)
         // Verificar que se haya llamado la acción
         expect(mockStartGoogleSignIn).toHaveBeenCalled()
+    })
+
+    test('El botón login debe llamar startLoginWithEmailAndPassword con valores especificos', () => {
+
+        const email = 'dani@gmail.com'
+        const password = '123456'
+
+        render(
+            <Provider
+                store={store}
+            >
+                <MemoryRouter>
+                    <LoginPage />
+                </MemoryRouter>
+            </Provider>
+        )
+        const emailField = screen.getByRole('textbox', { name: 'Correo' })
+        fireEvent.change(emailField, { target: { name: 'email', value: email } })
+
+        const passwordField = screen.getByTestId('password')
+        fireEvent.change(passwordField, { target: { name: 'password', value: password } })  
+        // screen.debug()
+
+        const loginForm = screen.getByLabelText('submit-form')
+        fireEvent.submit(loginForm)
 
         
+
     })
 })

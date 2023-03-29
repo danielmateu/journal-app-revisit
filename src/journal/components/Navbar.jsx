@@ -2,7 +2,7 @@ import { LogoutOutlined, MenuOutlined } from '@mui/icons-material'
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { startLogout } from '../../../store/auth/thunks'
-import { useCheckAuth } from '../../hooks/useCheckAuth'
+
 
 export const Navbar = ({ drawerWidth }) => {
 
@@ -16,6 +16,13 @@ export const Navbar = ({ drawerWidth }) => {
         dispatch(startLogout())
     }
 
+    const handleSidebarOpen = () => {
+        console.log('Open Sidebar')
+        // Open sidebar from the left
+        
+    }
+
+
     return (
         <AppBar
             position={'fixed'}
@@ -26,6 +33,7 @@ export const Navbar = ({ drawerWidth }) => {
         >
             <Toolbar>
                 <IconButton
+                    onClick={handleSidebarOpen}
                     color={'inherit'}
                     // aria-label={'open drawer'}
                     edge={'start'}

@@ -42,6 +42,7 @@ export const LoginPage = () => {
             {/* <h1>Hola mundo: {import.meta.env.VITE_HOLA}</h1> */}
             <form onSubmit={onSubmit}
                 className='animate__animated animate__fadeIn animate__faster'
+                aria-label="submit-form"
 
             >
                 <Grid
@@ -66,6 +67,7 @@ export const LoginPage = () => {
                         item
                         xs={12}>
                         <TextField
+                            inputProps={{ 'data-testid': 'password' }}
                             label='Contraseña'
                             type={'password'}
                             fullWidth

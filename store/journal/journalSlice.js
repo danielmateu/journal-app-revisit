@@ -64,6 +64,10 @@ export const journalSlice = createSlice({
             state.messageSaved = 'Nota eliminada correctamente';
         },
         setMessageSaved: (state, action) => { },
+        showSidebar: (state, action) => {
+            state.showSidebar = true;
+
+        },
     }
 });
 
@@ -80,5 +84,6 @@ export const {
     setMessageSaved,
     setPhotosToActiveNote,
     clearNotesLogout,
-    deleteNoteById
+    deleteNoteById,
+    showSidebar
 } = journalSlice.actions;

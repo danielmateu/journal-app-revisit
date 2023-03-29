@@ -24,6 +24,8 @@ export const JournalLayout = ({ children }) => {
             {/* Sidebar drawerWidth */}
             <Sidebar
                 drawerWidth={drawerWidth}
+                component={'sidebar'}
+                
             />
 
             <Box
