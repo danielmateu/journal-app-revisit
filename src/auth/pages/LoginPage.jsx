@@ -84,7 +84,6 @@ export const LoginPage = () => {
                         gap='1rem'
                     >
 
-
                         <Grid item xs={12} sm={5}>
                             <Button
                                 disabled={isAuthenticating}
